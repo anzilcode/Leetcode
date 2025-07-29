@@ -7,18 +7,15 @@
  * @return {number}
  */
 var majorityElement = function(nums) {
-    let freq = new Map();
-    let maxCount = 0;
-    let maxNum = nums[0];
+let count = 0;
+    let myMaj = null;
 
     for (let num of nums) {
-        freq.set(num, (freq.get(num) || 0) + 1);
-
-        if (freq.get(num) > maxCount) {
-            maxCount = freq.get(num);
-            maxNum = num;
+        if (count === 0) {
+            myMaj = num;
         }
+        count += (num === myMaj) ? 1 : -1;
     }
 
-    return maxNum;
+    return myMaj;
 }
